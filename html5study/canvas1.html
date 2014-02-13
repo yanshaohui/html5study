@@ -1,0 +1,61 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body style="margin:0px;">
+<div id="postion"></div>
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #d3d3d3;background:#ffffff;">
+浏览器不支持HTML5
+</canvas>
+<script type="text/javascript">
+var c = document.getElementById("myCanvas");
+var t = document.getElementById("postion");
+c.onmousemove=function(event){
+	var x = event.clientX;
+	var y = event.clientY;
+	t.innerHTML = "X:" + x + "  Y:" + y;
+}
+var cxt=c.getContext("2d");
+//画矩形
+cxt.fillStyle = "#FF0000";
+cxt.fillRect(0,0,200,200);
+cxt.fillStyle = "#00FF00";
+cxt.fillRect(10,10,180,180);
+cxt.fillStyle = "#0000FF";
+cxt.fillRect(20,20,160,160);
+//划线
+cxt.moveTo(0,0);
+cxt.lineTo(400,400);
+cxt.moveTo(0,200);
+cxt.lineTo(200,0);
+cxt.stroke();
+//画弧
+cxt.beginPath();
+/**
+ * context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+ * x	圆的中心的 x 坐标。
+ * y	圆的中心的 y 坐标。
+ * r	圆的半径。
+ * sAngle	起始角，以弧度计。（弧的圆形的三点钟位置是 0 度）。
+ * eAngle	结束角，以弧度计。
+ * counterclockwise	可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针
+*/
+cxt.arc(300,300,100,0,Math.PI*0.5,true);
+cxt.closePath();
+//弧线
+cxt.stroke();
+
+//渐变色
+var grd = cxt.createLinearGradient(200,200,400,400);
+grd.addColorStop(0,"#FF0000");
+grd.addColorStop(0.8,"#FFFF00");
+cxt.fillStyle=grd;
+cxt.beginPath();
+cxt.arc(300,300,80,0,Math.PI*1,true);
+cxt.closePath();
+//填充
+cxt.fill();
+
+</script>
+</body>
+</html>
