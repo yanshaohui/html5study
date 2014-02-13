@@ -48,7 +48,8 @@ cxt.stroke();
 //渐变色
 var grd = cxt.createLinearGradient(200,200,400,400);
 grd.addColorStop(0,"#FF0000");
-grd.addColorStop(0.8,"#FFFF00");
+grd.addColorStop(0.5,"#FFFF00");
+grd.addColorStop(1,"#0000FF");
 cxt.fillStyle=grd;
 cxt.beginPath();
 cxt.arc(300,300,80,0,Math.PI*1,true);
